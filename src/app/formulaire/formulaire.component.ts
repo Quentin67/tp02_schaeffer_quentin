@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms';
 import { User } from'../user.model';
 import { UserService } from'../user.service';
 @Component({
@@ -13,19 +13,56 @@ export class FormulaireComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private userService: UserService) {
     this.userInfos = this.formBuilder.group({
-      lastName: null,
-      firstName: null,
-      street: null,
-      zipCode: null,
-      city: null,
-      phone: null,
-      email: null,
-      sexe: null,
-      password: null,
-      login: null, 
-      country: null,
+      lastName: ['', Validators.required],
+      firstName: ['', Validators.required],
+      street: ['', Validators.required],
+      zipCode: ['', Validators.required],
+      city: ['', Validators.required],
+      phone: ['', [Validators.required, Validators.minLength(10)]],
+      email: ['', [Validators.required, Validators.email]],
+      sexe: ['', Validators.required],
+      password: new FormControl('', [
+        Validators.required,
+        Validators.minLength(6)
+      ]),
+      login: ['', Validators.required], 
+      country: ['', Validators.required],
     });
     
+  }
+
+  get password(){
+    return this.userInfos.get('password');
+  }
+  get lastName(){
+    return this.userInfos.get('lastName');
+  }
+  get firstName(){
+    return this.userInfos.get('firstName');
+  }
+  get street(){
+    return this.userInfos.get('street');
+  }
+  get zipCode(){
+    return this.userInfos.get('zipCode');
+  }
+  get city(){
+    return this.userInfos.get('city');
+  }
+  get phone(){
+    return this.userInfos.get('phone');
+  }
+  get email(){
+    return this.userInfos.get('email');
+  }
+  get sexe(){
+    return this.userInfos.get('sexe');
+  }
+  get login(){
+    return this.userInfos.get('login');
+  }
+  get country(){
+    return this.userInfos.get('country');
   }
 
   submit(){
