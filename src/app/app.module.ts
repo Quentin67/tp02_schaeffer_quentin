@@ -7,6 +7,7 @@ import { TetiereComponent } from './tetiere/tetiere.component';
 import { FormulaireComponent } from './formulaire/formulaire.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormResultsComponent } from './form-results/form-results.component';
+import {phoneNumberPipe} from './app.phonenumber.pipe'
 @NgModule({
   declarations: [
     AppComponent,
@@ -14,6 +15,7 @@ import { FormResultsComponent } from './form-results/form-results.component';
     TetiereComponent,
     FormulaireComponent,
     FormResultsComponent,
+    phoneNumberPipe
   ],
   imports: [
     BrowserModule,
