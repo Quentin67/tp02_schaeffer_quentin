@@ -9,10 +9,11 @@ export class phoneNumberPipe implements PipeTransform {
     var ret = [];
     var i;
     var len;
-    for(i = 0, len = str.length; i < len; i += n) {
-       ret.push(str.substr(i, n))
+    if(str){
+        for(i = 0, len = str.length; i < len; i += n) {
+            ret.push(str.substr(i, n))
+         }
     }
-
     return ret
 };
 }
